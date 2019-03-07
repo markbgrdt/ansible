@@ -87,7 +87,7 @@ class Connection(ConnectionBase):
         out_path = self._normalize_path(out_path, '/')
         self._display.vvv("PUT %s TO %s" % (in_path, out_path), host=self.host)
         with open(in_path) as in_fh:
-            content = in_fh.read()
+            content = in_fh.read().rstrip()
         self.client.cmd(self.host, 'file.write', [out_path, content])
 
     # TODO test it
